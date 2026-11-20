@@ -1,6 +1,5 @@
 import csv
 import matplotlib.pyplot as plt
-
 # Create sales data
 sales = [
     ["Product", "Quantity", "Price"],
@@ -10,16 +9,13 @@ sales = [
     ["Keyboard", 15, 800],
     ["Mouse", 25, 500]
 ]
-
 # Store data in CSV file
 with open("sales.csv", "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerows(sales)
-
 # Read CSV file
 products = []
 total_sales = []
-
 with open("sales.csv", "r") as file:
     reader = csv.reader(file)
     next(reader)

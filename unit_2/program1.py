@@ -1,11 +1,36 @@
 
-units = float(input("Enter electricity units consumed: "))
+"""Play a number guessing game with a limited number of attempts."""
 
-if units <= 100:
-    bill = units * 1.5
-elif units <= 200:
-    bill = (100 * 1.5) + (units - 100) * 2.5
-else:
-    bill = (100 * 1.5) + (100 * 2.5) + (units - 200) * 4
+import random
 
-print("Electricity Bill =", bill)
+def main():
+    print("\n======= NUMBER GUESSING GAME =======")
+
+    secret_number = random.randint(1, 100)
+    max_attempts = 5
+    attempts = 0
+
+    print("Guess a number between 1 and 100.")
+    print("You have only 5 attempts!")
+
+    while attempts < max_attempts:
+        guess = int(input("\nEnter your guess: "))
+        attempts += 1
+
+        if guess == secret_number:
+            print("\nCongratulations! You guessed correctly.")
+            print("Number of attempts:", attempts)
+            break
+
+        elif guess < secret_number:
+            print("Too low! Try a higher number.")
+
+        else:
+            print("Too high! Try a lower number.")
+
+    else:
+        print("\nGame Over! You used all attempts.")
+        print("The correct number was:", secret_number)
+
+if __name__ == "__main__":
+    main()

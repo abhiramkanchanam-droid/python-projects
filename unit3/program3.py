@@ -1,16 +1,17 @@
-numbers = [1, 2, 3, 2, 1, 4, 2, 3, 1, 5]
+text = input("Enter a sentence or paragraph: ")
+words = text.lower().split()
 
 frequency = {}
 
-for num in numbers:
-    if num in frequency:
-        frequency[num] += 1
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
     else:
-        frequency[num] = 1
+        frequency[word] = 1
 
-print("Numbers:", numbers)
+print("Text:", text)
 
-print("\nFrequency Count:")
+print("\nWord Frequency Count:")
 
 for key, value in frequency.items():
     print(key, "occurs", value, "times")

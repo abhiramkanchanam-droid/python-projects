@@ -1,34 +1,56 @@
-name = input("Enter student name: ")
+"""Calculate student marks, percentage and grade."""
 
-m1 = int(input("Enter marks in Subject 1: "))
-m2 = int(input("Enter marks in Subject 2: "))
-m3 = int(input("Enter marks in Subject 3: "))
+def calculate_grade(percentage):
+    """Return grade based on percentage."""
 
-total = m1 + m2 + m3
-average = total / 3
+    if percentage >= 90:
+        return "A+"
+    elif percentage >= 80:
+        return "A"
+    elif percentage >= 70:
+        return "B"
+    elif percentage >= 60:
+        return "C"
+    elif percentage >= 50:
+        return "D"
+    elif percentage >= 40:
+        return "E"
+    else:
+        return "F"
 
-print("\n--- STUDENT RESULT ---")
-print("Name:", name)
-print("Total Marks:", total)
-print("Average:", average)
 
-if m1 < 0 or m1 > 100 or m2 < 0 or m2 > 100 or m3 < 0 or m3 > 100:
-    print("Invalid marks entered!")
+def main():
+    """Read student details and display the grade."""
 
-elif average >= 90:
-    print("Grade: A")
+    name = input("Enter Student Name: ")
+    roll_no = input("Enter Roll Number: ")
 
-elif average >= 80:
-    print("Grade: B")
+    number = int(input("Enter number of subjects: "))
 
-elif average >= 70:
-    print("Grade: C")
+    marks = []
 
-elif average >= 60:
-    print("Grade: D")
+    for i in range(number):
+        mark = float(input(f"Enter marks for Subject {i+1}: "))
+        marks.append(mark)
 
-elif average >= 40:
-    print("Grade: E")
+    total = sum(marks)
+    percentage = total / number
 
-else:
-    print("Grade: F (Fail)")
+    grade = calculate_grade(percentage)
+
+    if percentage >= 40:
+        result = "PASS"
+    else:
+        result = "FAIL"
+
+    print("\n----- STUDENT GRADE REPORT -----")
+    print("Student Name :", name)
+    print("Roll Number  :", roll_no)
+    print("Total Marks  :", total)
+    print("Percentage  :", percentage, "%")
+    print("Grade        :", grade)
+    print("Result       :", result)
+
+
+if __name__ == "__main__":
+    main()

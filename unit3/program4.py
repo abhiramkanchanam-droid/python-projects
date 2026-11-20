@@ -1,60 +1,19 @@
-students = {}
+students = []
 
-while True:
-    print("\n--- ATTENDANCE TRACKER ---")
-    print("1. Add Student")
-    print("2. Mark Attendance")
-    print("3. View Attendance")
-    print("4. Exit")
+number_of_students = int(input("Enter the number of students: "))
 
-    choice = input("Enter your choice: ")
+for i in range(number_of_students):
+    print("\nStudent", i + 1)
+    name = input("Enter student name: ")
+    attendance = input("Enter attendance (P for Present, A for Absent): ").strip().upper()
 
-    if choice == "1":
-        name = input("Enter student name: ")
-        students[name] = {"present": 0, "total": 0}
-        print("Student added successfully!")
+    while attendance not in ("P", "A"):
+        print("Please enter P or A.")
+        attendance = input("Enter attendance (P for Present, A for Absent): ").strip().upper()
 
-    elif choice == "2":
-        name = input("Enter student name: ")
+    status = "Present" if attendance == "P" else "Absent"
+    students.append((name, status))
 
-        if name in students:
-            status = input("Enter P for Present or A for Absent: ").upper()
-
-            if status == "P":
-                students[name]["present"] += 1
-                students[name]["total"] += 1
-                print("Present marked!")
-
-            elif status == "A":
-                students[name]["total"] += 1
-                print("Absent marked!")
-
-            else:
-                print("Invalid attendance status!")
-
-        else:
-            print("Student not found!")
-
-    elif choice == "3":
-        print("\n--- ATTENDANCE REPORT ---")
-
-        for name, data in students.items():
-            total = data["total"]
-            present = data["present"]
-
-            if total > 0:
-                percentage = (present / total) * 100
-            else:
-                percentage = 0
-
-            print("\nStudent:", name)
-            print("Present:", present)
-            print("Total Classes:", total)
-            print("Attendance:", round(percentage, 2), "%")
-
-    elif choice == "4":
-        print("Thank you!")
-        break
-
-    else:
-        print("Invalid choice!")
+print("\n--- ATTENDANCE REPORT ---")
+for name, status in students:
+    print(name, "-", status)

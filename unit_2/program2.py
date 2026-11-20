@@ -1,6 +1,20 @@
-rows = int(input("Enter number of rows: "))
+"""Check whether a given number is prime or not."""
 
-for i in range(1, rows + 1):
-    for j in range(1, i + 1):
-        print("*", end=" ")
-    print()
+def main():
+    print("======= PRIME NUMBER CHECKER =======")
+
+    num = int(input("Enter a number: "))
+
+    if num <= 1:
+        print(num, "is not a prime number")
+
+    else:
+        for i in range(2, num):
+            if num % i == 0:
+                print(num, "is not a prime number")
+                break
+        else:
+            print(num, "is a prime number")
+
+if __name__ == "__main__":
+    main()

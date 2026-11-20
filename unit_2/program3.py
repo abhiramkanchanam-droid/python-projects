@@ -1,15 +1,14 @@
-print("Using range:")
-for i in range(1, 6):
-    print(i)
+"""Generate Fibonacci series using recursion."""
 
-print("\nUsing enumerate:")
-names = ["Abhiram", "Rahul", "Anil"]
-for index, name in enumerate(names, start=1):
-    print(index, name)
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
 
-print("\nUsing zip:")
-subjects = ["Python", "Math", "English"]
-marks = [90, 85, 88]
+n = int(input("Enter the number of terms: "))
 
-for subject, mark in zip(subjects, marks):
-    print(subject, ":", mark)
+print("Fibonacci Series:")
+
+for i in range(n):
+    print(fibonacci(i), end=" ")
